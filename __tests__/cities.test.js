@@ -19,6 +19,17 @@ describe('cities routes', () => {
     expect(res.body.skateparks).toEqual(city.skateparks);
     expect(res.body.state).toEqual(city.state);
   });
+
+  it('/get cities route', async () => {
+    const res = await request(app).get('/api/v1/cities');
+    expect(res.body.length).toEqual(6);
+    expect(res.body[0]).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      skateparks: expect.any(Number),
+      state: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
