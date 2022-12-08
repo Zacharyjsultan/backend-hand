@@ -9,6 +9,16 @@ describe('rout 4 movies', () => {
     return setup(pool);
   });
 
+  it('GET moobie id', async () => {
+    const res = await request(app).get('/movies/1');
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      title: expect.any(String),
+      year: expect.any(Number),
+      rating: expect.any(Number),
+    });
+  });
+
   it('POST movie', async () => {
     const movie = new Movies({
       title: 'Earth',
