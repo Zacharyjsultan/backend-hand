@@ -33,7 +33,7 @@ describe('dogs routes', () => {
   });
 
   it('GET/:id dogsbiid', async () => {
-    const res = await request(app).get('/dogs');
+    const res = await request(app).get('/dogs/1');
     expect(res.body.length).toEqual(1);
     expect(res.body).toEqual({
       id: expect.any(String),
