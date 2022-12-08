@@ -47,7 +47,7 @@ describe('dogs routes', () => {
       breed: 'corgi',
     });
     expect(res.body.name).toEqual('jupiter');
-    expect(res.body.type).toEqual('corgi');
+    expect(res.body.breed).toEqual('corgi');
     expect(res.status).toEqual(200);
   });
 
