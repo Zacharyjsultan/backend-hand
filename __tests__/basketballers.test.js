@@ -43,6 +43,18 @@ describe('bball routes', () => {
       strength: expect.any(String),
     });
   });
+
+  it('PUT update ballers', async () => {
+    const res = await request(app).put('/basketballers/1').send({
+      name: 'Crawford',
+      rating: 7,
+      strength: 'sauce',
+    });
+    expect(res.body.name).toEqual('Crawford');
+    expect(res.body.rating).toEqual(7);
+    expect(res.body.strength).toEqual('sauce');
+  });
+
   afterAll(() => {
     pool.end();
   });
