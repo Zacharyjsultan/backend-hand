@@ -50,6 +50,10 @@ describe('dogs routes', () => {
     expect(res.body.breed).toEqual('corgi');
     expect(res.status).toEqual(200);
   });
+  it('/delete by dogs id', async () => {
+    const res = await request(app).delete('/dogs/1');
+    expect(res.status).toEqual(204);
+  });
 
   afterAll(() => {
     pool.end();
