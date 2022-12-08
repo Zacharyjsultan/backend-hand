@@ -50,9 +50,6 @@ describe('rout 4 movies', () => {
       year: 2525,
       rating: 1,
     });
-    expect(res.body.title).toEqual('Zagger N Evans');
-    expect(res.body.year).toEqual(2525);
-    expect(res.body.rating).toEqual(1);
   });
 
   afterAll(() => {
