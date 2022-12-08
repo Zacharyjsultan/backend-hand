@@ -22,7 +22,17 @@ describe('rout 4 movies', () => {
     const count = await Movies.count();
     expect(count).toEqual(7);
   });
-
+  it('GET all moobies ', async () => {
+    const res = await request(app).get('/movies');
+    expect(res.body[0]).toEqual({
+      id: expect.any(String),
+      title: expect.any(String),
+      year: expect.any(Number),
+      rating: expect.any(Number),
+    });
+    const count = await Movies.count();
+    expect(count).toEqual(6);
+  });
   afterAll(() => {
     pool.end();
   });
