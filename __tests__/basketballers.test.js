@@ -55,6 +55,11 @@ describe('bball routes', () => {
     expect(res.body.strength).toEqual('sauce');
   });
 
+  it('DELETE baller', async () => {
+    const res = await request(app).delete('/basketballers/1');
+    expect(res.status).toEqual(204);
+  });
+
   afterAll(() => {
     pool.end();
   });
