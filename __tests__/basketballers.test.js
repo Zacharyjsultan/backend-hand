@@ -23,6 +23,17 @@ describe('bball routes', () => {
     expect(count).toEqual(6);
   });
 
+  it('GET all ballers', async () => {
+    const res = await request(app).get('/basketballers');
+    expect(res.length).toEqual(5);
+    expect(res.body[0]).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      rating: expect.any(Number),
+      strength: expect.any(String),
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
