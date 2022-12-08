@@ -55,6 +55,11 @@ describe('rout 4 movies', () => {
     expect(res.body.rating).toEqual(1);
   });
 
+  it('DELETE moobi', async () => {
+    const res = await request(app).delete('/movies/1');
+    expect(res.status).toEqual(204);
+  });
+
   afterAll(() => {
     pool.end();
   });
