@@ -33,7 +33,7 @@ describe('cat routes', () => {
     });
   });
 
-  test('get cats by id', async () => {
+  it('get cats by id', async () => {
     const res = await request(app).get('/cats/1');
     expect(res.body).toEqual({
       id: expect.any(String),
@@ -41,6 +41,16 @@ describe('cat routes', () => {
       breed: expect.any(String),
       age: expect.any(Number),
     });
+  });
+  it('update cats', async () => {
+    const res = await request(app).put('/cats/1').send({
+      name: 'Giupetto',
+      breed: 'Tabby',
+      age: 22,
+    });
+    expect(res.body.name).toEqual('Giupetto');
+    expect(res.body.breed).toEqual('Tabby');
+    expect(res.body.age).toEqual(22);
   });
 
   afterAll(() => {
