@@ -34,6 +34,15 @@ describe('bball routes', () => {
     });
   });
 
+  it('GET baller by :ID', async () => {
+    const res = await request(app).get('/basketballers/1');
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      rating: expect.any(Number),
+      strength: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
