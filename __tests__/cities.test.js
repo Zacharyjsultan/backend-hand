@@ -30,6 +30,16 @@ describe('cities routes', () => {
       state: expect.any(String),
     });
   });
+
+  it('/GET cities by id', async () => {
+    const res = await request(app).get('/api/v1/cities/1');
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      skateparks: expect.any(Number),
+      state: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
