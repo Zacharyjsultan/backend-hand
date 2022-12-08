@@ -52,7 +52,10 @@ describe('cat routes', () => {
     expect(res.body.breed).toEqual('Tabby');
     expect(res.body.age).toEqual(22);
   });
-
+  it('delete a cat', async () => {
+    const res = await request(app).delete('/cats/1');
+    expect(res.status).toEqual(204);
+  });
   afterAll(() => {
     pool.end();
   });
