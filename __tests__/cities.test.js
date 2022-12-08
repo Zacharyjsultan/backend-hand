@@ -27,6 +27,11 @@ describe('cities routes', () => {
     expect(res.body.state).toEqual(city.state);
   });
 
+  it('/DELETE city', async () => {
+    const res = await request(app).delete('/api/v1/cities/1');
+    expect(res.status).toEqual(204);
+  });
+
   it('/get cities route', async () => {
     const res = await request(app).get('/api/v1/cities');
     expect(res.body.length).toEqual(6);
