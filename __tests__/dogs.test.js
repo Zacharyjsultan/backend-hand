@@ -9,7 +9,7 @@ describe('dogs routes', () => {
     return setup(pool);
   });
 
-  it('create route', async () => {
+  it('POST', async () => {
     const dog = new Dogs({
       name: 'mango',
       breed: 'toddler',
@@ -20,6 +20,16 @@ describe('dogs routes', () => {
     const count = await Dogs.dogCount();
     expect(count).toEqual(6);
     expect(res.status).toBe(200);
+  });
+
+  it('get all dogs route', async () => {
+    const res = await request(app).get('/dogs');
+    expect(res.body.length).toEqual(5);
+    expect(res.body[0]).toEqual({
+      id: 
+      name: expect.any(String),
+      breed: expect.any(String),
+    });
   });
 
   afterAll(() => {
