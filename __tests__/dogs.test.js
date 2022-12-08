@@ -32,6 +32,16 @@ describe('dogs routes', () => {
     });
   });
 
+  it('GET/:id dogsbiid', async () => {
+    const res = await request(app).get('/dogs');
+    expect(res.body.length).toEqual(1);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      breed: expect.any(String),
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
