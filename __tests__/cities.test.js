@@ -8,6 +8,13 @@ describe('cities routes', () => {
     return setup(pool);
   });
 
+  it('/put route for cities', async () => {
+    const res = await request(app).put('/api/v1/cities/1').send({
+      name: 'Detroit',
+    });
+    expect(res.body.name).toEqual('Detroit');
+  });
+
   it('/post cities skt', async () => {
     const city = {
       name: 'seattle',
