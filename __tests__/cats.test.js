@@ -8,7 +8,7 @@ describe('cat routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  test('post cat', async () => {
+  it('post cat', async () => {
     const cat = {
       name: 'alcapulco',
       breed: 'hairless',
@@ -22,7 +22,28 @@ describe('cat routes', () => {
     expect(count).toEqual(7);
     expect(res.status).toEqual(200);
   });
-});
-afterAll(() => {
-  pool.end();
+  it('get all cats', async () => {
+    const res = await request(app).get('/cats');
+    expect(res.body.length).toEqual(6);
+    expect(res.body[0]).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      breed: expect.any(String),
+      age: expect.any(Number),
+    });
+  });
+
+  test('get cats by id', async () => {
+    const res = await request(app).get('/cats/1');
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      breed: expect.any(String),
+      age: expect.any(Number),
+    });
+  });
+
+  afterAll(() => {
+    pool.end();
+  });
 });
