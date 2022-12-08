@@ -42,12 +42,13 @@ describe('dogs routes', () => {
   });
 
   it('/put/ dogs route', async () => {
-    const dog = {
+    const res = await request(app).put('/dogs/1').send({
       name: 'jupiter',
       breed: 'corgi',
-    };
-    const res = await request(app).put('/dogs/update').send(dog);
-    expect(res.body).toEqual(dog);
+    });
+    expect(res.body.name).toEqual('jupiter');
+    expect(res.body.type).toEqual('corgi');
+    expect(res.status).toEqual(200);
   });
 
   afterAll(() => {
