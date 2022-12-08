@@ -43,6 +43,18 @@ describe('rout 4 movies', () => {
     const count = await Movies.count();
     expect(count).toEqual(6);
   });
+
+  it('update moobies route', async () => {
+    const res = await request(app).put('/movies/1').send({
+      title: 'Zagger N Evans',
+      year: 2525,
+      rating: 1,
+    });
+    expect(res.body.title).toEqual('Zagger N Evans');
+    expect(res.body.year).toEqual(2525);
+    expect(res.body.rating).toEqual(1);
+  });
+
   afterAll(() => {
     pool.end();
   });
