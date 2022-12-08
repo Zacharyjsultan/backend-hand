@@ -25,7 +25,7 @@ describe('bball routes', () => {
 
   it('GET all ballers', async () => {
     const res = await request(app).get('/basketballers');
-    expect(res.length).toEqual(5);
+    expect(res.body.length).toEqual(5);
     expect(res.body[0]).toEqual({
       id: expect.any(String),
       name: expect.any(String),
