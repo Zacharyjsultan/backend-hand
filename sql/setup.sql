@@ -6,14 +6,14 @@ DROP TABLE IF EXISTS cats;
 
 DROP TABLE IF EXISTS basketballers;
 
-DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS movies CASCADE;
 
 DROP TABLE IF EXISTS cities;
 
 CREATE TABLE cities (
     id bigint generated always AS identity PRIMARY KEY,
     name varchar,
-    skateparks int NOT NULL,
+    skateparks int,
     state varchar
 );
 
