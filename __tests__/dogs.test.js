@@ -26,7 +26,7 @@ describe('dogs routes', () => {
     const res = await request(app).get('/dogs');
     expect(res.body.length).toEqual(5);
     expect(res.body[0]).toEqual({
-      id: 
+      id: expect.any(String),
       name: expect.any(String),
       breed: expect.any(String),
     });
