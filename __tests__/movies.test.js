@@ -19,6 +19,8 @@ describe('rout 4 movies', () => {
     expect(res.body.title).toEqual(movie.title);
     expect(res.body.year).toEqual(movie.year);
     expect(res.body.rating).toEqual(movie.rating);
+    const count = await Movies.count();
+    expect(count).toEqual(7);
   });
 
   afterAll(() => {
